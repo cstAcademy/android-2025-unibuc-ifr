@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">UniBucIFR2025</string>
+
+    <string name="hello_world">Salut lume!</string>
+    <string name="click_me">Apasa aici!</string>
+
+    <string name="north">Nord</string>
+    <string name="south">Sud</string>
+    <string name="east">Est</string>
+    <string name="west">Vest</string>
+</resources>

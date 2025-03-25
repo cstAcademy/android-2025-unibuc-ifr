@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">UniBucIFR2025</string>
+
+    <string name="hello_world">Hello World!</string>
+    <string name="click_me">Click Me!</string>
+
+    <string name="north">North</string>
+    <string name="south">South</string>
+    <string name="east">East</string>
+    <string name="west">West</string>
+</resources>
