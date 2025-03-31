@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btn_click_me).setOnClickListener {
-            //goToSecondActivity()
-            changeDirection()
+            goToSecondActivity()
+            //changeDirection()
 
             Log.e("TAG", "setOnClickListener")
         }
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToSecondActivity() {
-        val intent = Intent(this, SecondActivity::class.java)
+        val intent = Intent(this, ControllerActivity::class.java)
         startActivity(intent)
         finish()
     }

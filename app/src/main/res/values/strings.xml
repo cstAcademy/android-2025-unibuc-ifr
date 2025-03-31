@@ -8,4 +8,13 @@
     <string name="south">South</string>
     <string name="east">East</string>
     <string name="west">West</string>
+
+<!--    AUTHENTICATION-->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="go_to_register">Go To Register</string>
+
+<!--HOME-->
+    <string name="home_page">Home Page</string>
+    <string name="hint_write_your_email_here">Write your email here…</string>
 </resources>
