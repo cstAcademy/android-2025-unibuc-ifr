@@ -17,7 +17,8 @@ import com.cst.unibucifr2025.models.WestCity
 import com.cst.unibucifr2025.utils.extensions.logErrorMessage
 
 class CitiesAdapter(
-    val items: List<City>
+    val items: List<City>,
+    val onItemClick: () -> Unit
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount() = items.size
@@ -91,6 +92,9 @@ class CitiesAdapter(
             Glide.with(imageView.context)
                 .load(city.imageUrl)
                 .into(imageView)
+            imageView.setOnClickListener{
+                onItemClick.invoke()
+            }
         }
     }
 

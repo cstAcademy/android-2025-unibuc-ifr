@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.cst.unibucifr2025.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_citiesFragment"
+            app:destination="@id/citiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/citiesFragment"
+        tools:layout="@layout/fragment_cities"
+        android:name="com.cst.unibucifr2025.ui.cities.CitiesFragment"
+        android:label="CitiesFragment" />
 </navigation>

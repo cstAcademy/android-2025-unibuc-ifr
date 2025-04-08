@@ -17,4 +17,5 @@
 <!--HOME-->
     <string name="home_page">Home Page</string>
     <string name="hint_write_your_email_here">Write your email here…</string>
+    <string name="insert_city">Insert City</string>
 </resources>

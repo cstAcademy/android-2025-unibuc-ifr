@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cst.unibucifr2025.R
@@ -73,7 +74,9 @@ class HomeFragment : Fragment() {
             SouthCity("Budapest", "Description 5"),
         ).shuffled()
 
-        val adapter = CitiesAdapter(items)
+        val adapter = CitiesAdapter(items) {
+            goToCities()
+        }
 
         val layoutManager = LinearLayoutManager(requireContext())
 
@@ -81,5 +84,10 @@ class HomeFragment : Fragment() {
             this.layoutManager = layoutManager
             this.adapter = adapter
         }
+    }
+
+    fun goToCities() {
+        val action = HomeFragmentDirections.actionHomeFragmentToCitiesFragment()
+        findNavController().navigate(action)
     }
 }
