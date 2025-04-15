@@ -22,5 +22,9 @@ enum class DirectionType(val id: Int, val resourceId: Int) {
     NORTH(0, R.string.north),
     SOUTH(1, R.string.south),
     EAST(2, R.string.east),
-    WEST(3, R.string.west)
+    WEST(3, R.string.west),
+    UNKNOWN(-1,R.string.unknown);
+    companion object{
+        fun getDirectionTypeById(id: Int) = DirectionType.entries.find { it.id == id } ?: UNKNOWN
+    }
 }

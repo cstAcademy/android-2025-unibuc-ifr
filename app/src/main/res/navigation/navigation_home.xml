@@ -16,7 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/citiesFragment"
-        tools:layout="@layout/fragment_cities"
         android:name="com.cst.unibucifr2025.ui.cities.CitiesFragment"
-        android:label="CitiesFragment" />
+        android:label="CitiesFragment"
+        tools:layout="@layout/fragment_cities">
+        <argument
+            android:name="directionId"
+            app:argType="long"
+            app:nullable="false" />
+    </fragment>
 </navigation>

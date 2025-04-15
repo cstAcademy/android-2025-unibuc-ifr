@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cst.unibucifr2025.R
-import com.cst.unibucifr2025.adapters.CitiesAdapter
-import com.cst.unibucifr2025.models.City
+import com.cst.unibucifr2025.adapters.DirectionsAdapter
+import com.cst.unibucifr2025.data.models.DirectionEntityModel
+import com.cst.unibucifr2025.data.repositories.DirectionRepository
 import com.cst.unibucifr2025.models.DirectionType
-import com.cst.unibucifr2025.models.EastCity
-import com.cst.unibucifr2025.models.NorthCity
-import com.cst.unibucifr2025.models.SouthCity
-import com.cst.unibucifr2025.models.West
-import com.cst.unibucifr2025.models.WestCity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment() {
 
@@ -32,51 +32,13 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_items)
 
         val items = listOf(
-            SouthCity("Bucharest", "Description 1"),
-            NorthCity("Paris", "Description 2"),
-            EastCity("Barcelona", "Description 3"),
-            WestCity("Cairo", "Description 4"),
-            SouthCity("Budapest", "Description 5"),
-            SouthCity("Bucharest", "Description 1"),
-            NorthCity("Paris", "Description 2"),
-            EastCity("Barcelona", "Description 3"),
-            WestCity("Cairo", "Description 4"),
-            SouthCity("Budapest", "Description 5"),
-            SouthCity("Bucharest", "Description 1"),
-            NorthCity("Paris", "Description 2"),
-            EastCity("Barcelona", "Description 3"),
-            WestCity("Cairo", "Description 4"),
-            SouthCity("Budapest", "Description 5"),
-            SouthCity("Bucharest", "Description 1"),
-            NorthCity("Paris", "Description 2"),
-            EastCity("Barcelona", "Description 3"),
-            WestCity("Cairo", "Description 4"),
-            SouthCity("Budapest", "Description 5"),
-            SouthCity("Bucharest", "Description 1"),
-            NorthCity("Paris", "Description 2"),
-            EastCity("Barcelona", "Description 3"),
-            WestCity("Cairo", "Description 4"),
-            SouthCity("Budapest", "Description 5"),
-            SouthCity("Bucharest", "Description 1"),
-            NorthCity("Paris", "Description 2"),
-            EastCity("Barcelona", "Description 3"),
-            WestCity("Cairo", "Description 4"),
-            SouthCity("Budapest", "Description 5"),
-            SouthCity("Bucharest", "Description 1"),
-            NorthCity("Paris", "Description 2"),
-            EastCity("Barcelona", "Description 3"),
-            WestCity("Cairo", "Description 4"),
-            SouthCity("Budapest", "Description 5"),
-            SouthCity("Bucharest", "Description 1"),
-            NorthCity("Paris", "Description 2"),
-            EastCity("Barcelona", "Description 3"),
-            WestCity("Cairo", "Description 4"),
-            SouthCity("Budapest", "Description 5"),
+            DirectionType.EAST,
+            DirectionType.WEST,
+            DirectionType.NORTH,
+            DirectionType.SOUTH
         ).shuffled()
 
-        val adapter = CitiesAdapter(items) {
-            goToCities()
-        }
+        val adapter = DirectionsAdapter(items) { direction -> addDirectionIntoDatabase(direction) }
 
         val layoutManager = LinearLayoutManager(requireContext())
 
@@ -86,8 +48,21 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun goToCities() {
-        val action = HomeFragmentDirections.actionHomeFragmentToCitiesFragment()
+    fun addDirectionIntoDatabase(directionType: DirectionType) {
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                val entity = DirectionEntityModel(
+                    id = directionType.id.toLong(),
+                    type = directionType
+                )
+                DirectionRepository.insert(entity)
+            }
+            goToCities(directionType.id.toLong())
+        }
+    }
+
+    fun goToCities(id: Long) {
+        val action = HomeFragmentDirections.actionHomeFragmentToCitiesFragment(id)
         findNavController().navigate(action)
     }
 }
