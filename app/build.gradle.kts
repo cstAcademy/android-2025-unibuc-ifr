@@ -35,9 +35,14 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     val room_version = "2.6.1"
 
     implementation(libs.androidx.room.runtime)
@@ -66,6 +71,11 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     implementation(libs.glide)
+
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson) // For JSON parsing
+    implementation(libs.logging.interceptor) // Logging
+    implementation(libs.kotlinx.coroutines.android) // Coroutines
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
