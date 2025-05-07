@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_citiesFragment"
             app:destination="@id/citiesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_navigation_users"
+            app:destination="@id/navigation_users" />
     </fragment>
     <fragment
         android:id="@+id/citiesFragment"
@@ -21,7 +24,8 @@
         tools:layout="@layout/fragment_cities">
         <argument
             android:name="directionId"
-            app:argType="long"
+            app:argType="par"
             app:nullable="false" />
     </fragment>
+    <include app:graph="@navigation/navigation_users" />
 </navigation>

@@ -46,6 +46,10 @@ class HomeFragment : Fragment() {
             this.layoutManager = layoutManager
             this.adapter = adapter
         }
+
+        view.findViewById<View>(R.id.btn_go_to_users).setOnClickListener {
+            goToUsers()
+        }
     }
 
     fun addDirectionIntoDatabase(directionType: DirectionType) {
@@ -63,6 +67,11 @@ class HomeFragment : Fragment() {
 
     fun goToCities(id: Long) {
         val action = HomeFragmentDirections.actionHomeFragmentToCitiesFragment(id)
+        findNavController().navigate(action)
+    }
+
+    fun goToUsers() {
+        val action = HomeFragmentDirections.actionHomeFragmentToNavigationUsers()
         findNavController().navigate(action)
     }
 }

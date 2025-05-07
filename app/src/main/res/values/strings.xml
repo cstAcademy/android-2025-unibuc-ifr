@@ -21,4 +21,5 @@
     <string name="hint_write_your_password_here">Write your password here…</string>
     <string name="insert_city">Insert City</string>
     <string name="get_directions_city">Get Directions City</string>
+    <string name="go_to_users">Go To Users</string>
 </resources>

@@ -26,6 +26,12 @@
             android:textColor="@color/white"
             android:text="@string/home_page" />
 
+        <Button
+            android:id="@+id/btn_go_to_users"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/go_to_users"/>
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
