@@ -15,3 +15,4 @@ data class UserModel(
     val lastName: String,
     val avatar: String
 )
+

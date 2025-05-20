@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cst.unibucifr2025.BuildConfig
 import com.cst.unibucifr2025.R
+import com.cst.unibucifr2025.managers.SharedPrefsManager
 import com.cst.unibucifr2025.networking.repository.AuthenticationRepository
 import com.cst.unibucifr2025.utils.extensions.logErrorMessage
 import com.cst.unibucifr2025.utils.extensions.showToast
@@ -73,6 +74,10 @@ class LoginFragment : Fragment() {
                 }
 
                 "Login success: ${result.token}".showToast(requireContext())
+
+                withContext(Dispatchers.IO) {
+                    SharedPrefsManager.saveAuthToken(result.token)
+                }
 
                 goToHome()
             } catch (e: IOException) {

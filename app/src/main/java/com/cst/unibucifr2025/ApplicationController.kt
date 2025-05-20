@@ -1,11 +1,14 @@
 package com.cst.unibucifr2025
 
 import android.app.Application
+import android.content.SharedPreferences
 import androidx.room.Room
 import com.cst.unibucifr2025.data.AppDatabase
 
 class ApplicationController : Application() {
     companion object {
+        const val SHARED_PREFS_NAME = "unibuc-shared-refs"
+
         var instance: ApplicationController? = null
             private set
     }
@@ -26,5 +29,9 @@ class ApplicationController : Application() {
         )
             .fallbackToDestructiveMigration()
             .build()
+    }
+
+    val sharedPrefs: SharedPreferences by lazy {
+        getSharedPreferences(SHARED_PREFS_NAME, MODE_PRIVATE)
     }
 }

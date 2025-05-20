@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_cities">
         <argument
             android:name="directionId"
-            app:argType="par"
+            app:argType="long"
             app:nullable="false" />
     </fragment>
     <include app:graph="@navigation/navigation_users" />

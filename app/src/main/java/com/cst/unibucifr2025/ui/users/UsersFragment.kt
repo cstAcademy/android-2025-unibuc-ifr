@@ -51,7 +51,7 @@ class UsersFragment: Fragment() {
 
             if(result.size > 4) {
                 val users = listOf(result[0], result[2], result[4])
-                adapter.updateList(users)
+                adapter.submitList(users)
             }
 
 //            users.clear()
@@ -69,11 +69,13 @@ class UsersFragment: Fragment() {
                     UserRepository.getUsers(1)
                 }
 
-                delay(3000)
+                withContext(Dispatchers.IO) {
+                    delay(3000)
 
-                UserDataRepository.insert(result.data)
+                    UserDataRepository.insert(result.data)
+                }
 
-                adapter.updateList(result.data)
+                adapter.submitList(result.data)
 
 //                users.clear()
 //                users.addAll(result.data)
