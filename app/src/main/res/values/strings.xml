@@ -22,4 +22,5 @@
     <string name="insert_city">Insert City</string>
     <string name="get_directions_city">Get Directions City</string>
     <string name="go_to_users">Go To Users</string>
+    <string name="log_out">Log Out</string>
 </resources>

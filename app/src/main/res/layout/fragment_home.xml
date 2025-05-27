@@ -32,6 +32,21 @@
             android:layout_height="match_parent"
             android:text="@string/go_to_users"/>
 
+        <Button
+            android:id="@+id/btn_log_out"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/log_out"/>
+
+        <ImageButton
+            android:id="@+id/btn_contact_us"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_button"
+            android:text="@string/log_out"/>
+
+
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

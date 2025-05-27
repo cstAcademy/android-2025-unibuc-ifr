@@ -72,6 +72,8 @@ dependencies {
 
     implementation(libs.glide)
 
+    implementation(libs.androidx.core.splashscreen)
+
     implementation(libs.retrofit)
     implementation(libs.converter.gson) // For JSON parsing
     implementation(libs.logging.interceptor) // Logging

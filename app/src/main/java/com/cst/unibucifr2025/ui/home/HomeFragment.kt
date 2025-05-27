@@ -1,5 +1,6 @@
 package com.cst.unibucifr2025.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cst.unibucifr2025.ControllerActivity
 import com.cst.unibucifr2025.R
 import com.cst.unibucifr2025.adapters.DirectionsAdapter
 import com.cst.unibucifr2025.data.models.DirectionEntityModel
 import com.cst.unibucifr2025.data.repositories.DirectionRepository
+import com.cst.unibucifr2025.managers.SharedPrefsManager
+import com.cst.unibucifr2025.managers.logoutUser
 import com.cst.unibucifr2025.models.DirectionType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,6 +54,10 @@ class HomeFragment : Fragment() {
         view.findViewById<View>(R.id.btn_go_to_users).setOnClickListener {
             goToUsers()
         }
+
+        view.findViewById<View>(R.id.btn_log_out).setOnClickListener {
+            logout()
+        }
     }
 
     fun addDirectionIntoDatabase(directionType: DirectionType) {
@@ -73,5 +81,13 @@ class HomeFragment : Fragment() {
     fun goToUsers() {
         val action = HomeFragmentDirections.actionHomeFragmentToNavigationUsers()
         findNavController().navigate(action)
+    }
+
+    fun logout() = activity?.apply {
+        SharedPrefsManager.logoutUser()
+
+        val intent = Intent(this, ControllerActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

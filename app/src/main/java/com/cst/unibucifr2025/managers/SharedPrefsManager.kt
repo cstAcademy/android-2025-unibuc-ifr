@@ -15,6 +15,17 @@ object SharedPrefsManager {
 
     fun getAuthToken(): String? = sharedPrefs?.getString(KEY_AUTH_TOKEN, null)
 
+    fun removeToken() = sharedPrefs?.let { sp ->
+        with(sp.edit()) {
+            remove(KEY_AUTH_TOKEN)
+            apply()
+        }
+    }
+
     private val sharedPrefs
         get() = ApplicationController.instance?.sharedPrefs
 }
+
+fun SharedPrefsManager.isUserLoggedIn() = !this.getAuthToken().isNullOrEmpty()
+
+fun SharedPrefsManager.logoutUser() = removeToken()
