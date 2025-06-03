@@ -33,10 +33,10 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (view.findViewById(R.id.tv_register) as? TextView)?.setOnClickListener {
-            val email = view.findViewById<EditText>(R.id.edt_email).text.toString()
-            goToRegister(email)
-        }
+//        (view.findViewById(R.id.tv_register) as? TextView)?.setOnClickListener {
+//            val email = view.findViewById<EditText>(R.id.edt_email).text.toString()
+//            goToRegister(email)
+//        }
 
         (view.findViewById(R.id.btn_login) as? Button)?.setOnClickListener {
             doLogin()

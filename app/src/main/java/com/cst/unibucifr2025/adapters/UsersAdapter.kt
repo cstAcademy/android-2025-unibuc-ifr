@@ -12,7 +12,9 @@ import com.bumptech.glide.Glide
 import com.cst.unibucifr2025.R
 import com.cst.unibucifr2025.models.UserModel
 
-class UsersAdapter: ListAdapter<UserModel, UsersAdapter.UserViewHolder>(UsersDiffCallback()) {
+class UsersAdapter(
+    private val onItemClick: (UserModel) -> Unit
+): ListAdapter<UserModel, UsersAdapter.UserViewHolder>(UsersDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
@@ -32,6 +34,10 @@ class UsersAdapter: ListAdapter<UserModel, UsersAdapter.UserViewHolder>(UsersDif
         private val email: TextView = itemView.findViewById(R.id.tv_email)
 
         fun bind(model: UserModel) {
+            itemView.setOnClickListener {
+                onItemClick(model)
+            }
+
             val fullNameValue = "${model.firstName} ${model.lastName}"
             fullName.text = fullNameValue
 

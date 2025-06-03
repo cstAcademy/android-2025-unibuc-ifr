@@ -19,9 +19,9 @@
         app:layout_constraintWidth_percent="0.8">
 
         <TextView
+            style="@style/AppText.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="@string/register" />
 
         <EditText

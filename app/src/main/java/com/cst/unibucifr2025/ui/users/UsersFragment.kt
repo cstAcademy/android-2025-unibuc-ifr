@@ -10,20 +10,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cst.unibucifr2025.R
 import com.cst.unibucifr2025.adapters.UsersAdapter
+import com.cst.unibucifr2025.data.repositories.UserIdentityCardRepository
 import com.cst.unibucifr2025.models.UserModel
+import com.cst.unibucifr2025.models.one_to_one.UserIdentityCardModel
 import com.cst.unibucifr2025.networking.repository.UserRepository
 import com.cst.unibucifr2025.utils.extensions.showToast
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
+import java.util.UUID
 import com.cst.unibucifr2025.data.repositories.UserRepository as UserDataRepository
 
-class UsersFragment: Fragment() {
+class UsersFragment : Fragment() {
 
-    private val adapter = UsersAdapter()
+    private val adapter = UsersAdapter { user ->
+        getUserWidIdentityCard(user)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,13 +49,27 @@ class UsersFragment: Fragment() {
         getUsersFromServer()
     }
 
+    private fun getUserWidIdentityCard(model: UserModel) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            val userWithID = withContext(Dispatchers.IO) {
+                UserDataRepository.getUserWithIDC(model.id)
+            } ?: return@launch
+
+            Snackbar.make(
+                view ?: return@launch,
+                "${userWithID.user.firstName} ${userWithID.user.lastName}, cnp: ${userWithID.id.cnp}",
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
+    }
+
     private fun getUsersFromDatabase() {
         viewLifecycleOwner.lifecycleScope.launch {
             val result = withContext(Dispatchers.IO) {
                 UserDataRepository.getAllUsers()
             }
 
-            if(result.size > 4) {
+            if (result.size > 4) {
                 val users = listOf(result[0], result[2], result[4])
                 adapter.submitList(users)
             }
@@ -72,7 +92,16 @@ class UsersFragment: Fragment() {
                 withContext(Dispatchers.IO) {
                     delay(3000)
 
-                    UserDataRepository.insert(result.data)
+                    val users = result.data
+                    UserDataRepository.insert(users)
+
+                    val idCards = users.map { user ->
+                        UserIdentityCardModel(
+                            cnp = UUID.randomUUID().toString(),
+                            userOwnerId = user.id
+                        )
+                    }
+                    UserIdentityCardRepository.insert(idCards)
                 }
 
                 adapter.submitList(result.data)

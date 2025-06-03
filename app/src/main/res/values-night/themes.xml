@@ -1,8 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.UniBucIFR2025" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Primary brand color used for buttons, etc. -->
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorOnPrimary">@color/primary</item>
+
+        <!-- Surface and text styling -->
+        <item name="colorSurface">@color/primary</item> <!-- Dialog background -->
+        <item name="colorOnSurface">@color/text_secondary</item> <!-- Dialog text -->
+
+        <!-- Optional: Used for selected item color, icon tint, etc. -->
+        <item name="colorSecondary">@color/second_accent</item>
+        <item name="colorOnSecondary">@color/primary</item>
+
+        <!-- Backgrounds -->
+        <item name="android:colorBackground">@color/primary</item>
+
+        <!-- Headings and body text -->
+        <item name="colorSurfaceVariant">@color/secondary</item>
+        <item name="colorOnSurfaceVariant">@color/text_primary</item>
     </style>
 
     <style name="Theme.UniBucIFR2025" parent="Base.Theme.UniBucIFR2025" />

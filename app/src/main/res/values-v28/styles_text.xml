@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppText.Title" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/font_family_main</item>
+        <item name="android:textFontWeight">600</item>
+    </style>
+</resources>

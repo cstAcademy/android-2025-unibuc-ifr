@@ -10,4 +10,9 @@ object UserRepository {
 
     suspend fun getAllUsers() =
         ApplicationController.instance?.appDatabase?.userDao?.getAll() ?: listOf()
+
+
+    suspend fun getUserWithIDC(userId: String) =
+        ApplicationController.instance?.appDatabase?.userDao?.getUserWithIdentityCard(id = userId)
+
 }

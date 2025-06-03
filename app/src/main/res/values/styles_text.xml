@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    100    Extra Light or Ultra Light-->
+    <!--    200    Light or Thin-->
+    <!--    300    Book or Demi-->
+    <!--    400    Normal or Regular-->
+    <!--    500    Medium-->
+    <!--    600    Semibold, Demibold-->
+    <!--    700    Bold-->
+    <!--    800    Black, Extra Bold or Heavy-->
+    <!--    900    Extra Black, Fat, Poster or Ultra Black-->
+
+    <!--    | Style Name                                | Size (sp) |-->
+    <!--    | `TextAppearance.Material3.DisplayLarge`   | 57sp      |-->
+    <!--    | `TextAppearance.Material3.DisplayMedium`  | 45sp      |-->
+    <!--    | `TextAppearance.Material3.DisplaySmall`   | 36sp      |-->
+    <!--    | `TextAppearance.Material3.HeadlineLarge`  | 32sp      |-->
+    <!--    | `TextAppearance.Material3.HeadlineMedium` | 28sp      |-->
+    <!--    | `TextAppearance.Material3.HeadlineSmall`  | 24sp      |-->
+    <!--    | `TextAppearance.Material3.TitleLarge`     | 22sp      |-->
+    <!--    | `TextAppearance.Material3.TitleMedium`    | 16sp      |-->
+    <!--    | `TextAppearance.Material3.TitleSmall`     | 14sp      |-->
+    <!--    | `TextAppearance.Material3.BodyLarge`      | 16sp      |-->
+    <!--    | `TextAppearance.Material3.BodyMedium`     | 14sp      |-->
+    <!--    | `TextAppearance.Material3.BodySmall`      | 12sp      |-->
+    <!--    | `TextAppearance.Material3.LabelLarge`     | 14sp      |-->
+    <!--    | `TextAppearance.Material3.LabelMedium`    | 12sp      |-->
+    <!--    | `TextAppearance.Material3.LabelSmall`     | 11sp      |-->
+
+    <style name="AppText.Title" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:font">@font/inter_bold</item>
+    </style>
+
+</resources>
