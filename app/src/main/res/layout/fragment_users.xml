@@ -4,15 +4,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/lly_actions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/default_space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.8">
+
+        <Button
+            android:id="@+id/btn_user_with_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/get_user_with_identity_card" />
+
+        <Button
+            android:id="@+id/btn_address_with_users"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/get_address_with_users" />
+
+        <Button
+            android:id="@+id/btn_job_with_users"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/get_job_with_users" />
+
+        <Button
+            android:id="@+id/btn_user_with_jobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/get_user_with_jobs" />
+
+        <TextView
+            android:id="@+id/tv_data"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/default_space"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_users"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingVertical="@dimen/default_space"
+        android:paddingHorizontal="@dimen/default_space"
+        android:paddingBottom="@dimen/default_space"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/lly_actions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

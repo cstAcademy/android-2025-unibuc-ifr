@@ -23,4 +23,8 @@
     <string name="get_directions_city">Get Directions City</string>
     <string name="go_to_users">Go To Users</string>
     <string name="log_out">Log Out</string>
+    <string name="get_address_with_users">Get Address with Users</string>
+    <string name="get_job_with_users">Get Job with Users</string>
+    <string name="get_user_with_jobs">Get User With Jobs</string>
+    <string name="get_user_with_identity_card">Get User With Identity Card</string>
 </resources>
